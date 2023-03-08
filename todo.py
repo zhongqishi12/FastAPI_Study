@@ -5,8 +5,8 @@ from sqlalchemy.orm import Session
 from models import Todos
 from database import engine, SessionLocal
 
-
 app = FastAPI()
+
 
 def get_db():
     try:
@@ -15,6 +15,12 @@ def get_db():
     finally:
         db.close()
 
+
 @app.get("/todos")
 async def get_todos(db: Session = Depends(get_db)):
     return db.query(Todos).all()
+
+
+@app.post("/todo")
+async def post_todos(todo: Todos, db: Session = Depends(get_db)):
+    pass
