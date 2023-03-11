@@ -3,11 +3,11 @@ from sqlalchemy import Boolean, Column, Integer, String
 from pydantic import BaseModel
 
 
-class Todos(BaseModel):
+class Todo(Base):
     __tablename__ = "t_todos"
 
-    id: int = Column(Integer, primary_key=True, index=True)
-    title: str = Column(String)
-    description: str = Column(String)
-    priority: int = Column(Integer)
-    completed: bool = Column(Boolean, default=False)
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
+    description = Column(String)
+    priority = Column(Integer)
+    completed = Column(Boolean, default=False)    
